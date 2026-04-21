@@ -10,14 +10,18 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: students
-          uri: 'http://localhost:8090'
+        - id: msvc-student
+          uri: lb://MSVC-STUDENT # Usar lb:// para balanceo de carga
           predicates:
             - Path=/api/student/**
-        - id: courses
-          uri: 'http://localhost:9090'
+        - id: msvc-course
+          uri: lb://MSVC-COURSE
           predicates:
             - Path=/api/course/**
+
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: true # CAMBIAR A TRUE
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

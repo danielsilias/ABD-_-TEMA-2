@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/db_course
     username: estudiante
-    password: admin
+    password: estudiante
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,48 +16,6 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
 
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eurekaserver:
-  port: 9090
-
-spring:
-  application:
-    name: msvc-course
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/coursesDb
-    username: postgres
-    password: 150919
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    database: postgresql
-server:
-  port: 8080
-
-spring:
-  application:
-    name: msvc-course
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_course
-    username: estudiante
-    password: admin
-  jpa:
-    hibernate:
-      ddl-auto: update
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQLDialect
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka    database-platform: org.hibernate.dialect.PostgreSQLDialect
-
-eureka:
-  instance:
-    hostname: localhost
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka

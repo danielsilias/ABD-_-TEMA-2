@@ -1,0 +1,31 @@
+services:
+  db-mysql:
+    image: mysql:8.0
+    container_name: db-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: db_student
+    ports:
+      - "3306:3306"
+    networks:
+      - microservices-net
+
+  eureka-server:
+    image: eclipse-temurin:21-jre-jammy
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-net
+
+  config-server:
+    image: eclipse-temurin:21-jre-jammy
+    container_name: config-server
+    ports:
+      - "8888:8888"
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge

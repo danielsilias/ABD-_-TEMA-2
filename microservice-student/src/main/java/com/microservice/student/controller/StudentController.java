@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+@CrossOrigin(origins = "http://localhost:4200") // 👈 Permite que Angular reciba los datos de forma segura
 @RestController
 @RequestMapping("/api/student")
 public class StudentController {
@@ -21,8 +23,8 @@ public class StudentController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> findById(){
-        return ResponseEntity.ok(studentService.findAll());
+    public ResponseEntity<?> findAllStudents() {
+        return ResponseEntity.ok(studentService.findAllWithCourses());
     }
 
     @GetMapping("/search/{id}")
@@ -33,5 +35,9 @@ public class StudentController {
     @GetMapping("/search-by-course/{courseId}")
     public ResponseEntity<?> findByIdCourse(@PathVariable Long courseId){
         return ResponseEntity.ok(studentService.findByCourseId(courseId));
+    }
+    @GetMapping("/search-with-course/{studentId}")
+    public ResponseEntity<?> findStudentWithCourse(@PathVariable Long studentId) {
+        return ResponseEntity.ok(studentService.findStudentWithCourse(studentId));
     }
 }
